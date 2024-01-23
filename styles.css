@@ -1,3 +1,19 @@
+body{
+  background-color: blanchedalmond;
+}
+.border{
+  width: 35%;
+  height: 400px;
+  border: 1px solid;
+  position: absolute;
+  border-radius: 25px;
+}
+p{
+  padding: 0 100px;
+  text-align: center;
+  font-family: system-ui;
+  margin-top: 30px;
+}
 .wrapper{
   display: flex;
   flex-direction: column;
@@ -5,17 +21,27 @@
 }
 #laptop {
   position: relative;
-  width: 563px;
+  width: 559px;
   height: 401px;
-  background-image: url(laptop3.png);
+  background-image: url(laptop.png);
   background-size: cover;
   margin-bottom: 20px;
-  border-right: 1px solid;
-  padding-right: 5px;
+  display: flex;
+  transform: translateX(-10%);
+}
+#phone{
+  position: relative;
+  width: 205px;
+  height: 401px;
+  background-image: url(15.png);
+  background-size: cover;
+  margin-bottom: 20px;
+  display: flex;
+  transform: translateX(-42%);
 }
 .stickers{
   display: flex;
-  
+  flex-flow: wrap;
 }
 .sticker {
   z-index: 234;

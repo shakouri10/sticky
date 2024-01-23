@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       // Only accept elements matching this CSS selector
       accept: '.draggable',
       // Require a 75% element overlap for a drop to be possible
-      overlap: 0.1,
+      overlap: 0.45,
       listeners: {
         drop(event) {
           // When a drop happens, add the "dropped" class to the draggable element
