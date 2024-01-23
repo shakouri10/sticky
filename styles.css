@@ -1,0 +1,44 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  direction: rtl;
+}
+#laptop {
+  position: relative;
+  width: 563px;
+  height: 401px;
+  background-image: url(laptop3.png);
+  background-size: cover;
+  margin-bottom: 20px;
+  border-right: 1px solid;
+  padding-right: 5px;
+}
+.stickers{
+  display: flex;
+  
+}
+.sticker {
+  z-index: 234;
+  width: 100px; /* Adjust as necessary */
+  height: 100px; /* Adjust as necessary */
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 5px;
+  transition: background-color 0.3s;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.dropzone {
+  /* Style as needed */
+}
+.drag-drop {
+  touch-action: none;
+  user-select: none;
+}
+.can-drop {
+  /* background-color: #e1ff8e; Style for can drop */
+}
+.dropped {
+  /* background-color: #ffffff; Style for dropped */
+}

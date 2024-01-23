@@ -1,20 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Sticker Shop Demo</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8">
+  <title>Sticker Shop</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="laptop-container">
-        <img id="laptop" src="laptop.png" alt="Laptop Image">
+    <div class="wrapper">
+        <p>
+            "در فروشگاه استیکر ما، با ویژگی کشیدن و رها کردن جدیدمان، شما می‌توانید استیکرهای مورد علاقه‌تان را به صورت مجازی روی تصویر لپ‌تاپ بچسبانید. کافی است استیکری که دوست دارید را انتخاب کنید و آن را به سمت لپ‌تاپ بکشید و هر جایی که دلتان خواست روی آن رها کنید. این روش نه تنها کاربردی و سرگرم کننده است، بلکه به شما امکان می‌دهد تا پیش از خرید، طرح نهایی لپ‌تاپ خود را با استیکرها مشاهده نمایید. طراحی خود را تنظیم کنید و آن را ذخیره کنید تا یک تجربه شخصی‌سازی شده و دلنشین را از خرید استیکرهایتان داشته باشید."
+        </p>
+        <div class="stickers">
+            <div class="sticker drag-drop" data-id="1" style="background-image: url('stickers/sticker1.png');"></div>
+            <div class="sticker drag-drop" data-id="2" style="background-image: url('stickers/sticker2.png');"></div>
+            <div class="sticker drag-drop" data-id="3" style="background-image: url('stickers/sticker3.png');"></div> 
+            <div id="laptop" class="dropzone">
+                <!-- Stickers will be dropped here -->
+            </div>
+
+        </div>
     </div>
-    <div id="stickers">
-        <!-- Add sticker images here with unique IDs -->
-        <img class="sticker" id="sticker1" src="1.png" alt="Sticker 1" draggable="true">
-        <img class="sticker" id="sticker2" src="2.png" alt="Sticker 2" draggable="true">
-        <img class="sticker" id="sticker3" src="3.png" alt="Sticker 2" draggable="true">
-        <!-- Add more stickers as needed -->
-    </div>
-    <script src="index.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
