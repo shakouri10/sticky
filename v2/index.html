@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>فروشگاه استیکر</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="deviceModal" class="modal">
+        <div class="modal-content">
+            <!-- <span class="close">&times;</span> -->
+            <p>دستگاه خود را انتخاب کنید:</p>
+            <div class="device-options">
+                <button id="btnMobile" class="btn">موبایل</button>
+                <button id="btnLaptop" class="btn">لپ‌تاپ</button>
+            </div>
+            <div id="deviceSelection" class="device-selection"></div>
+        </div>
+    </div>
+    
+    <div class="wrapper">
+        <div class="header">
+            <h1>به فروشگاه استیکر ما خوش آمدید</h1>
+            <button class="btn" onclick='anotherDevice()'>انتخاب دستگاه دیگر</button>
+        </div>
+        <div class="stickers">
+            <!-- Stickers will be dynamically added here -->
+            <div id="Showdevices" class="dropzone"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

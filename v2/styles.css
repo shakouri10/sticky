@@ -1,0 +1,164 @@
+@font-face {
+    font-family: 'iransans';
+    src: url('./IRANSans-web.woff2');
+}
+
+body {
+    font-family: 'iransans';
+    background-color: #ecf0f1;
+    color: #343A40;
+    direction: rtl;
+}
+
+button{
+    font-family: 'iransans';
+
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #FFFFFF;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    background-color: #1abc9c;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #16a085;
+}
+
+.wrapper {
+    text-align: center;
+    padding: 20px;
+}
+
+.header h1 {
+    color: #16a085;
+    margin-bottom: 20px;
+}
+
+.stickers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.sticker {
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: grab;
+    /* border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.dropzone {
+    min-height: 400px;
+    border: 2px dashed #aaa;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.dropzone img {
+    object-fit: contain;
+    width: 66%;
+    /* Prevents distortion of images */
+}
+
+
+
+.device-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+}
+.device-option img {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 5px;
+    width: 66%;
+}
+
+.device-option p {
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+
+.device-selection{
+    display: flex;
+}
+
+.stickers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.stickers > div:first-child {
+    /* Styling for the first child (device simulator) */
+    border: 2px dashed #aaa;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f7f7;
+    margin-right: 10px;
+    display: block;
+    width: 100%;
+}
