@@ -117,7 +117,6 @@ function selectModel(modelName) {
     document.getElementById("deviceModal").style.display = "none";
 }
 
-
 function goBack() {
     document.getElementById("deviceOptions").style.display = "none";
 }

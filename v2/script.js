@@ -1,21 +1,9 @@
-// document.addEventListener('DOMContentLoaded', () => {
-//   openModal();
-//   setupDragDrop();
-//   populateStickers();
-//   setupDeviceOptions();
-
-
-
-// });
-
-
 document.addEventListener('DOMContentLoaded', () => {
   showDescriptionModal();
   setupDragDrop();
   populateStickers();
   setupDeviceOptions();
 });
-
 
 function showDescriptionModal() {
   const descriptionModal = document.getElementById("descriptionModal");
@@ -28,16 +16,10 @@ function showDescriptionModal() {
   };
 }
 
-
 function openDeviceModal() {
   const deviceModal = document.getElementById("deviceModal");
   deviceModal.style.display = "block";
 }
-
-// function openModal() {
-//   const modal = document.getElementById("deviceModal");
-//   modal.style.display = "block";
-// }
 
 function closeModal() {
   const modal = document.getElementById("deviceModal");
@@ -110,18 +92,6 @@ function anotherDevice() {
   modal.style.display = "block";
 }
 
-// function populateStickers() {
-//   const stickers = document.querySelector('.stickers');
-//   for (let i = 1; i <= 12; i++) {
-//       const sticker = document.createElement('div');
-//       sticker.className = 'sticker drag-drop';
-//       sticker.style.backgroundImage = `url('stickers/sticker${i}.png')`;
-//       stickers.appendChild(sticker);
-//   }
-// }
-
-
-
 function populateStickers() {
   const stickers = document.querySelector('.stickers');
   for (let i = 1; i <= 12; i++) {
@@ -162,6 +132,7 @@ function toggleRotationMode(stickerElement) {
     }, 500); // 2 seconds timeout
   }
 }
+
 function rotateSticker(event, stickerElement) {
   let rotationDegree = parseInt(stickerElement.getAttribute('data-rotation'), 10);
   let x = parseFloat(stickerElement.getAttribute('data-x')) || 0;
@@ -186,7 +157,6 @@ function rotateSticker(event, stickerElement) {
   }
 }
 
-
 function showRotationPopup() {
   document.getElementById('rotationPopup').classList.add('show');
 }
@@ -194,9 +164,6 @@ function showRotationPopup() {
 function hideRotationPopup() {
   document.getElementById('rotationPopup').classList.remove('show');
 }
-
-
-
 
 function setupDragDrop() {
   interact('.drag-drop').draggable({
