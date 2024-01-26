@@ -1,27 +1,3 @@
-// // Store the position for each sticker
-// const positions = {};
-
-// interact('.drag-drop').draggable({
-//   listeners: {
-//     start(event) {
-//       let id = event.target.getAttribute('data-id');
-//       if (!positions[id]) {
-//         positions[id] = { x: 0, y: 0 };
-//       }
-//     },
-//     move(event) {
-//       let id = event.target.getAttribute('data-id');
-//       positions[id].x += event.dx;
-//       positions[id].y += event.dy;
-
-//       event.target.style.transform =
-//         `translate(${positions[id].x}px, ${positions[id].y}px)`;
-//     },
-//   }
-// });
-
-
-
 document.addEventListener('DOMContentLoaded', (event) => {
     // Target elements with the "draggable" class
     interact('.drag-drop').draggable({
@@ -70,4 +46,78 @@ document.addEventListener('DOMContentLoaded', (event) => {
       }
     });
   });
+
   
+  document.addEventListener('DOMContentLoaded', (event) => {
+    // Show the modal when the page loads
+    var modal = document.getElementById("deviceModal");
+    modal.style.display = "block";
+
+    // Close the modal when the user clicks on <span> (x)
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Close the modal if the user clicks anywhere outside of it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});
+
+
+function anotherDevice(){
+    document.getElementById("deviceModal").style.display = "block";
+    document.getElementById("Showdevices").innerHTML = '';
+
+}
+
+function showDeviceOptions(deviceType) {
+    var btnMobile = document.getElementById("btnMobile");
+    var btnLaptop = document.getElementById("btnLaptop");
+    var optionsDiv = document.getElementById("optionsContainer");
+    var deviceOptionsDiv = document.getElementById("deviceOptions");
+    var mobileBox = document.getElementById("mobile");
+    var laptopBox = document.getElementById("laptop");
+
+    // Reset active class
+    btnMobile.classList.remove("active");
+    btnLaptop.classList.remove("active");
+
+    // optionsDiv.innerHTML = ""; // Clear previous options
+    mobileBox.style.display = "none";
+    laptopBox.style.display = "none";
+
+    deviceOptionsDiv.style.display = "block";
+
+    if (deviceType === "mobile") {
+        btnMobile.classList.add("active");
+        mobileBox.style.display = "flex";
+
+        // optionsDiv.innerHTML = "<p>موبایل خود را انتخاب کنید</p> ...";
+        // optionsDiv.innerHTML += "<div class='model-box' onclick='selectModel(\"Model-1-M\")'>Model 1</div>";
+        // optionsDiv.innerHTML += "<div class='model-box' onclick='selectModel(\"Model-2-M\")'>Model 2</div>";   
+     } else if (deviceType === "laptop") {
+        btnLaptop.classList.add("active");
+        laptopBox.style.display = "flex";
+        // optionsDiv.innerHTML = "<p>لپتاپ خود را انتخاب کنید</p>";
+        // optionsDiv.innerHTML += "<div class='model-box' onclick='selectModel(\"Model-1-L\")'>Model 1</div>";
+        // optionsDiv.innerHTML += "<div class='model-box' onclick='selectModel(\"Model-2-L\")'>Model 2</div>";
+        // Add more models as needed
+    }
+}
+
+function selectModel(modelName) {
+    var laptopDiv = document.getElementById("Showdevices");
+    console.log(modelName);
+    laptopDiv.innerHTML = '<img src="'+modelName+'.png">';
+    // Close modal
+    document.getElementById("deviceModal").style.display = "none";
+}
+
+
+function goBack() {
+    document.getElementById("deviceOptions").style.display = "none";
+}

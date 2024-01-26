@@ -6,10 +6,66 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="deviceModal" class="modal">
+        <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>دستگاه خود را انتخاب کنید:</p>
+        <div class="device">
+            <button id="btnMobile" class="btn" onclick="showDeviceOptions('mobile')">Mobile</button>
+            <button id="btnLaptop" class="btn" onclick="showDeviceOptions('laptop')">Laptop</button>
+        </div>
+        <div id="deviceOptions" style="display:none;">
+            <!-- <button id="btnBack" class="btn" onclick="goBack()"></button> -->
+            <div id="optionsContainer">
+                <div id="mobile" class="wrapDevice">
+                    <div class='model-box' onclick='selectModel("15")'>
+                        <img src='15.png' class="imgPhone" alt='Model 1'>
+                        <div class='model-info'>
+                            <h3>Model 1</h3>
+                            <p>Size: 15"</p>
+                            <p>Year: 2022</p>
+                        </div>
+                    </div>
+                    <!-- <div class='model-box' onclick='selectModel("Model 2")'>
+                        <img src='path_to_image_2.jpg' alt='Model 2'>
+                        <div class='model-info'>
+                            <h3>Model 2</h3>
+                            <p>Size: 13"</p>
+                            <p>Year: 2021</p>
+                        </div>
+                    </div>           -->
+                </div>
+                <div id="laptop" class="wrapDevice">
+                    <div class='model-box' onclick='selectModel("Model-1-L")'>
+                        <img src='Model-1-L.png' class="imgLaptop" alt='Model 1'>
+                        <div class='model-info'>
+                          <h3>Model 1</h3>
+                          <p>Size: 15"</p>
+                          <p>Year: 2022</p>
+                        </div>
+                      </div>
+                      <div class='model-box' onclick='selectModel("Model-2-L")'>
+                        <img src='Model-2-L.png' class="imgLaptop" alt='Model 2'>
+                        <div class='model-info'>
+                          <h3>Model 2</h3>
+                          <p>Size: 13"</p>
+                          <p>Year: 2021</p>
+                        </div>
+                      </div>     
+                </div>   
+            </div>
+        </div>
+        </div>
+    </div>
+    
     <div class="wrapper">
+        
         <p>
             "در فروشگاه استیکر ما، با ویژگی کشیدن و رها کردن جدیدمان، شما می‌توانید استیکرهای مورد علاقه‌تان را به صورت مجازی روی تصویر لپ‌تاپ بچسبانید. کافی است استیکری که دوست دارید را انتخاب کنید و آن را به سمت لپ‌تاپ بکشید و هر جایی که دلتان خواست روی آن رها کنید. این روش نه تنها کاربردی و سرگرم کننده است، بلکه به شما امکان می‌دهد تا پیش از خرید، طرح نهایی لپ‌تاپ خود را با استیکرها مشاهده نمایید. طراحی خود را تنظیم کنید و آن را ذخیره کنید تا یک تجربه شخصی‌سازی شده و دلنشین را از خرید استیکرهایتان داشته باشید."
         </p>
+        <h1 onclick='anotherDevice()'>
+            انتخاب دستگاه دیگر..
+        </h1>
         <div class="stickers">
             <div class="sticker drag-drop" data-id="1" style="background-image: url('stickers/sticker1.png');"></div>
             <div class="sticker drag-drop" data-id="2" style="background-image: url('stickers/sticker2.png');"></div>
@@ -27,13 +83,17 @@
             <!-- <div class="sticker drag-drop" data-id="14" style="background-image: url('stickers/sticker2.png');"></div>
             <div class="sticker drag-drop" data-id="15" style="background-image: url('stickers/sticker3.png');"></div>  -->
             <!-- <span class="border"></span> -->
-            <div id="laptop" class="dropzone">
+            <div id="Showdevices" class="dropzone">
                 <!-- Stickers will be dropped here -->
             </div>
-            <div id="phone" class="dropzone">    
-</div>
+            <!-- <div id="phone" class="dropzone">    
+            </div> -->
         </div>
     </div>
+    <!-- Modal -->
+
+  
+  
   
   <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
   <script src="script.js"></script>
