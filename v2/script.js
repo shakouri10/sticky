@@ -1,16 +1,43 @@
+// document.addEventListener('DOMContentLoaded', () => {
+//   openModal();
+//   setupDragDrop();
+//   populateStickers();
+//   setupDeviceOptions();
+
+
+
+// });
+
+
 document.addEventListener('DOMContentLoaded', () => {
-  openModal();
+  showDescriptionModal();
   setupDragDrop();
   populateStickers();
   setupDeviceOptions();
 });
 
 
+function showDescriptionModal() {
+  const descriptionModal = document.getElementById("descriptionModal");
+  descriptionModal.style.display = "block";
 
-function openModal() {
-  const modal = document.getElementById("deviceModal");
-  modal.style.display = "block";
+  const understandButton = document.getElementById("understandButton");
+  understandButton.onclick = () => {
+    descriptionModal.style.display = "none";
+    openDeviceModal();
+  };
 }
+
+
+function openDeviceModal() {
+  const deviceModal = document.getElementById("deviceModal");
+  deviceModal.style.display = "block";
+}
+
+// function openModal() {
+//   const modal = document.getElementById("deviceModal");
+//   modal.style.display = "block";
+// }
 
 function closeModal() {
   const modal = document.getElementById("deviceModal");
@@ -83,15 +110,93 @@ function anotherDevice() {
   modal.style.display = "block";
 }
 
+// function populateStickers() {
+//   const stickers = document.querySelector('.stickers');
+//   for (let i = 1; i <= 12; i++) {
+//       const sticker = document.createElement('div');
+//       sticker.className = 'sticker drag-drop';
+//       sticker.style.backgroundImage = `url('stickers/sticker${i}.png')`;
+//       stickers.appendChild(sticker);
+//   }
+// }
+
+
+
 function populateStickers() {
   const stickers = document.querySelector('.stickers');
   for (let i = 1; i <= 12; i++) {
-      const sticker = document.createElement('div');
-      sticker.className = 'sticker drag-drop';
-      sticker.style.backgroundImage = `url('stickers/sticker${i}.png')`;
-      stickers.appendChild(sticker);
+    const sticker = document.createElement('div');
+    sticker.className = 'sticker drag-drop';
+    sticker.style.backgroundImage = `url('stickers/sticker${i}.png')`;
+    sticker.setAttribute('data-rotation', '0');
+    sticker.setAttribute('data-x', '0'); // Initial translation X
+    sticker.setAttribute('data-y', '0'); // Initial translation Y
+    sticker.onclick = (event) => toggleRotationMode(event.currentTarget);
+    stickers.appendChild(sticker);
   }
 }
+
+function toggleRotationMode(stickerElement) {
+  if (stickerElement.classList.contains('rotate-mode')) {
+    stickerElement.classList.remove('rotate-mode');
+    window.removeEventListener('keydown', stickerElement.rotationHandler);
+    clearTimeout(stickerElement.rotationTimeout);
+    hideRotationPopup();
+  } else {
+    stickerElement.classList.add('rotate-mode');
+    stickerElement.rotationHandler = (event) => rotateSticker(event, stickerElement);
+    window.addEventListener('keydown', stickerElement.rotationHandler);
+
+    // Set a timeout to automatically disable rotation mode and show popup
+    stickerElement.rotationTimeout = setTimeout(() => {
+      stickerElement.classList.remove('rotate-mode');
+      window.removeEventListener('keydown', stickerElement.rotationHandler);
+      hideRotationPopup();
+    }, 10000); // 3 seconds timeout
+
+    // Show the popup after 2 seconds
+    setTimeout(() => {
+      if (stickerElement.classList.contains('rotate-mode')) {
+        showRotationPopup();
+      }
+    }, 500); // 2 seconds timeout
+  }
+}
+function rotateSticker(event, stickerElement) {
+  let rotationDegree = parseInt(stickerElement.getAttribute('data-rotation'), 10);
+  let x = parseFloat(stickerElement.getAttribute('data-x')) || 0;
+  let y = parseFloat(stickerElement.getAttribute('data-y')) || 0;
+
+  if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+    if (event.key === 'ArrowRight') {
+      rotationDegree += 10;
+    } else {
+      rotationDegree -= 10;
+    }
+
+    stickerElement.style.transform = `translate(${x}px, ${y}px) rotate(${rotationDegree}deg)`;
+    stickerElement.setAttribute('data-rotation', rotationDegree.toString());
+
+    // Reset the timeout each time an arrow key is pressed
+    clearTimeout(stickerElement.rotationTimeout);
+    stickerElement.rotationTimeout = setTimeout(() => {
+      stickerElement.classList.remove('rotate-mode');
+      window.removeEventListener('keydown', stickerElement.rotationHandler);
+    }, 3000); // 3 seconds timeout
+  }
+}
+
+
+function showRotationPopup() {
+  document.getElementById('rotationPopup').classList.add('show');
+}
+
+function hideRotationPopup() {
+  document.getElementById('rotationPopup').classList.remove('show');
+}
+
+
+
 
 function setupDragDrop() {
   interact('.drag-drop').draggable({

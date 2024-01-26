@@ -4,8 +4,26 @@
     <meta charset="UTF-8">
     <title>فروشگاه استیکر</title>
     <link rel="stylesheet" href="styles.css">
+    
 </head>
 <body>
+    <div id="descriptionModal" class="modal">
+        <div class="modal-content">
+            <p>به سرویس شخصی‌سازی استیکر خوش آمدید! استیکرهای مورد نظر خود را روی دستگاه‌ خود قبل از خرید طراحی کنید.</p>
+            <ul>
+                <li>ابتدا نوع دستگاه خود را انتخاب کنید؛ موبایل یا لپ‌تاپ.</li>
+                <!-- <li>پس از انتخاب دستگاه، مدل‌های مختلف نمایش داده می‌شوند. مدل مورد نظر خود را انتخاب کنید.</li> -->
+                <li>استیکرهای موجود را مشاهده و با کشیدن و رها کردن آن‌ها روی دستگاه، طراحی خود را ایجاد کنید.</li>
+                <li>برای چرخاندن هر استیکر، روی آن کلیک کنید و سپس با استفاده از کلیدهای جهت چپ و راست، آن را بچرخانید.</li>
+                <!-- <li>پس از ۲ ثانیه، یک پاپ‌آپ راهنمایی نمایش داده می‌شود که نحوه چرخاندن استیکر را توضیح می‌دهد.</li> -->
+                <li>اگر برای مدت ۳ ثانیه هیچ عملیاتی انجام ندهید، حالت چرخاندن به صورت خودکار غیرفعال می‌شود.</li>
+            </ul>
+            <p>با استفاده از این سرویس، طراحی دلخواه خود را پیش از خرید استیکرها تجربه کنید و لذت ببرید!</p>  
+           <button id="understandButton" class="btn">فهمیدم</button>
+        </div>
+    </div>
+    
+
     <div id="deviceModal" class="modal">
         <div class="modal-content">
             <!-- <span class="close">&times;</span> -->
@@ -17,7 +35,7 @@
             <div id="deviceSelection" class="device-selection"></div>
         </div>
     </div>
-    
+
     <div class="wrapper">
         <div class="header">
             <h1>به فروشگاه استیکر ما خوش آمدید</h1>
@@ -29,6 +47,10 @@
         </div>
     </div>
 
+    <div id="rotationPopup" class="rotation-popup">
+        برای چرخاندن استیکر، از کلیدهای جهت چپ و راست استفاده کنید.
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <script src="script.js"></script>
 </body>

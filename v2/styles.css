@@ -106,7 +106,8 @@ button{
 }
 .dropzone img {
     object-fit: contain;
-    width: 66%;
+    max-width: 65%;
+
     /* Prevents distortion of images */
 }
 
@@ -161,4 +162,56 @@ button{
     margin-right: 10px;
     display: block;
     width: 100%;
+}
+
+
+
+.sticker.rotate-mode {
+    box-shadow: 0px 0px 15px #16a085; /* Highlight sticker in rotation mode */
+    position: relative;
+}
+
+.sticker.rotate-mode::after {
+    content: '\21BB'; /* Unicode for rotation icon */
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    font-size: 20px;
+    color: #16a085;
+}
+
+p{
+    font-size: 15px;
+    line-height: 25px;
+}
+
+li{
+    font-size: 13px;
+    text-align: right;
+    margin: 4px;
+    line-height: 24px;
+}
+
+.rotate-mode {
+    outline: 2px solid #16a085; /* Indicate rotation mode */
+    cursor: alias; /* Change cursor to indicate rotation mode */
+  }
+
+
+
+  .rotation-popup {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.rotation-popup.show {
+    display: block;
 }
