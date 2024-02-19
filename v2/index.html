@@ -41,11 +41,21 @@
             <h1>به فروشگاه استیکر ما خوش آمدید</h1>
             <button class="btn" onclick='anotherDevice()'>انتخاب دستگاه دیگر</button>
         </div>
-        <div class="stickers">
-            <!-- Stickers will be dynamically added here -->
-            <div id="Showdevices" class="dropzone"></div>
+        <div class="inner-wrapper">
+            <div class="sticker-sidebar">
+                <h3>استیکرها</h3>
+                <div id="stickerList" class="sticker-list">
+                    <!-- Stickers will be added here dynamically -->
+                </div>
+            </div>
+            <div class="stickers" id="listSticker">
+                <!-- Stickers will be dynamically added here -->
+                <div id="Showdevices" class="dropzone"></div>
+            </div>
+           
         </div>
     </div>
+ 
 
     <div id="rotationPopup" class="rotation-popup">
         برای چرخاندن استیکر، از کلیدهای جهت چپ و راست استفاده کنید.

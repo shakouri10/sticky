@@ -75,27 +75,31 @@ button{
     padding: 20px;
 }
 
+.inner-wrapper{
+    display: flex;
+}
+
 .header h1 {
     color: #16a085;
     margin-bottom: 20px;
 }
 
 .stickers {
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; */
+    width: 100%;
 }
 
+
 .sticker {
-    width: 100px;
-    height: 100px;
+    position: relative;
     background-size: contain;
     background-repeat: no-repeat;
     cursor: grab;
-    /* border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+    display: inline-block;
 }
 
 .dropzone {
@@ -106,7 +110,7 @@ button{
 }
 .dropzone img {
     object-fit: contain;
-    max-width: 65%;
+    /* max-width: 65%; */
 
     /* Prevents distortion of images */
 }
@@ -143,13 +147,6 @@ button{
     display: flex;
 }
 
-.stickers {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
 
 .stickers > div:first-child {
     /* Styling for the first child (device simulator) */
@@ -162,6 +159,7 @@ button{
     margin-right: 10px;
     display: block;
     width: 100%;
+    height: max-content;
 }
 
 
@@ -214,4 +212,50 @@ li{
 
 .rotation-popup.show {
     display: block;
+}
+
+
+.sticker-sidebar {
+    right: 0;
+    top: 0;
+    width: 20%;
+    background-color: #f0f0f0;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    padding: 20px;
+
+}
+
+.sticker-list div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sticker-preview {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+.add-sticker-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    /* Add additional button styling here */
+}
+
+
+.remove-sticker-btn {
+    position: absolute;
+    top: 5px; /* Adjust as needed */
+    right: 5px; /* Adjust as needed */
+    display: none; /* Hide by default */
+    /* Additional styling for the button */
+    color: red;
+    border: 1px solid red;
+    cursor: pointer;
+}
+
+.sticker:hover .remove-sticker-btn {
+    display: block; /* Show the button on hover */
 }
