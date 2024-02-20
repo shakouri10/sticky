@@ -106,6 +106,7 @@ const devices = [
   },
   // Add other device types as needed
 ];
+let firstS = true;
 
 document.addEventListener('DOMContentLoaded', () => {
   showDescriptionModal();
@@ -159,7 +160,6 @@ function setupDeviceOptions() {
   });
 }
 
-
 function generateDeviceOptions(deviceType) {
   let optionsHtml = '';
   const filteredDevices = devices.filter(device => device.type === deviceType);
@@ -182,7 +182,19 @@ function deviceOptionHTML(image, name, widthCm, heightCm) {
 }
 
 function selectDevice(deviceImage, widthCm, heightCm) {
-  const dropzone = document.getElementById('Showdevices');
+  const listSticker = document.getElementById('listSticker');
+  listSticker.innerHTML = ''
+  
+  const dropzone = document.createElement('div');
+  dropzone.id = 'Showdevices'
+  dropzone.className = 'dropzone'
+
+  const titleU = document.createElement('h3');
+  titleU.className = 'titleU'
+  titleU.innerText= 'استیکر های انتخابی شما:'
+  listSticker.appendChild(dropzone)
+  listSticker.appendChild(titleU)
+
   const { width, height } = calculateImageSize(widthCm, heightCm);
   
   dropzone.innerHTML = `<img src='${deviceImage}' alt='Device' style='width: ${width}px; height: ${height}px;'>`;
@@ -216,6 +228,9 @@ function anotherDevice() {
 function populateStickerSidebar() {
   const stickerList = document.getElementById('stickerList');
   stickers.forEach((sticker) => {
+      const wrapSticker = document.createElement('div')
+      wrapSticker.className = 'wrap-sticker' 
+
       const stickerImg = document.createElement('img');
       stickerImg.src = sticker.address;
       stickerImg.className = 'sticker-preview';
@@ -226,10 +241,9 @@ function populateStickerSidebar() {
       addButton.className = 'add-sticker-btn';
       addButton.onclick = () => promptStickerSizeSelection(sticker); // Adjusted to include size selection
 
-      const stickerItem = document.createElement('div');
-      stickerItem.appendChild(stickerImg);
-      stickerItem.appendChild(addButton);
-      stickerList.appendChild(stickerItem);
+      wrapSticker.appendChild(stickerImg);
+      wrapSticker.appendChild(addButton);
+      stickerList.appendChild(wrapSticker);
   });
 }
 
@@ -262,7 +276,7 @@ function addStickerToDropzone(sticker, selectedSize) {
 
   // Create and append the remove button
   const removeButton = document.createElement('button');
-  removeButton.innerText = '-';
+  removeButton.innerText = 'حذف';
   removeButton.className = 'remove-sticker-btn';
   removeButton.style.display = 'none'; // Initially hide the button
   removeButton.onclick = () => stickerDiv.remove();
@@ -273,6 +287,10 @@ function addStickerToDropzone(sticker, selectedSize) {
   stickerDiv.onmouseleave = () => removeButton.style.display = 'none';
 
   document.getElementById('listSticker').appendChild(stickerDiv);
+  if(firstS){
+    window.scrollBy(0, 200);
+    firstS = false
+  }
   setupDragDrop(); // Re-initialize drag and drop for the new sticker
 }
 
@@ -291,9 +309,13 @@ function toggleRotationMode(stickerElement) {
     stickerElement.rotationTimeout = setTimeout(() => {
       stickerElement.classList.remove('rotate-mode');
       window.removeEventListener('keydown', stickerElement.rotationHandler);
-      hideRotationPopup();
-    }, 10000); // 3 seconds timeout
+    }, 2000); // 3 seconds timeout
 
+    setTimeout(() => {
+      if (stickerElement.classList.contains('rotate-mode')) {
+        hideRotationPopup();
+      }
+    }, 3000); 
     // Show the popup after 2 seconds
     setTimeout(() => {
       if (stickerElement.classList.contains('rotate-mode')) {
@@ -359,10 +381,10 @@ function setupDragDrop() {
       // Keep the dragged position in the data-x/data-y attributes
       var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
       var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-  
+      targetRotation = parseInt(target.getAttribute('data-rotation'), 10);
       // Translate the element
-      target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
-  
+      // target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+      target.style.transform = `translate(${x}px, ${y}px) rotate(${targetRotation}deg)`;
       // Update the position attributes
       target.setAttribute('data-x', x);
       target.setAttribute('data-y', y);
@@ -379,6 +401,6 @@ function setupDragDrop() {
           // When a drop happens, add the "dropped" class to the draggable element
           event.relatedTarget.classList.add('dropped');
         }
-      }
+      },
     });
   }
