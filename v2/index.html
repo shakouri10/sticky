@@ -41,9 +41,15 @@
             <button class="btn" onclick='anotherDevice()'>انتخاب دستگاه دیگر</button>
         </div>
         <div class="inner-wrapper">
-            <div class="sticker-sidebar">
-                <div id="stickerList" class="sticker-list">
-                    <!-- Stickers will be added here dynamically -->
+            <div class="sidebar">
+                <div class="sticker-options" id="stickerOptions">
+                    <!-- Options will be populated here -->
+                </div>
+                <div class="sticker-sidebar" id="stickerSidebar">
+                    <div id="stickerList" class="sticker-list">
+                        لطفا از ۳ گزینه بالا استفاده کنید تا استیکر های مورد انتظار شما نمایش داده شود
+                    </div>
+                        <!-- Stickers will be added here dynamically -->
                 </div>
             </div>
             <div class="stickers" id="listSticker">
@@ -54,11 +60,13 @@
         </div>
     </div>
  
+    <!-- Place this in your HTML where you want the loading indicator to appear -->
+    <!-- <div id="loadingIndicator" style="display: none;">Loading...</div> -->
 
     <div id="rotationPopup" class="rotation-popup">
         برای چرخاندن استیکر، از کلیدهای جهت چپ و راست استفاده کنید.
     </div>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>    
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <script src="script.js"></script>
 </body>

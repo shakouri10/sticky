@@ -1,69 +1,408 @@
 const stickers = [
-  {
-    name: "Sticker_1",
-    address: "stickers/sticker1.png",
-    size:[ { widthCm: "6", heightCm: "4" },{ widthCm: "8", heightCm: "7" }]
-  },
-  {
-    name: "Sticker_2",
-    address: "stickers/sticker2.png",
-    size:[ { widthCm: "6", heightCm: "4" },{ widthCm: "8", heightCm: "7" }]
-  },
-  {
-    name: "Sticker_3",
-    address: "stickers/sticker3.png",
-    size:[ { widthCm: "6", heightCm: "4" },{ widthCm: "8", heightCm: "7" }]
-  },
-  {
-    name: "Sticker_4",
-    address: "stickers/sticker4.png",
-    size:[ { widthCm: "6", heightCm: "4" },{ widthCm: "8", heightCm: "7" }]
-  },
-  {
-    name: "Sticker_5",
-    address: "stickers/sticker5.png",
-    size:[ { widthCm: "6", heightCm: "4" },{ widthCm: "8", heightCm: "7" }]
-  },
-  {
-    name: "Sticker_6",
-    address: "stickers/sticker6.png",
-    size:[ { widthCm: "6", heightCm: "4" },{ widthCm: "8", heightCm: "7" }]
-  },
-  {
-    name: "Sticker_7",
-    address: "stickers/sticker7.png",
-    size:[ { widthCm: "6", heightCm: "4" },{ widthCm: "8", heightCm: "7" }]
-  },
-  {
-    name: "Sticker_8",
-    address: "stickers/sticker8.png",
-    size:[ { widthCm: "6", heightCm: "4" },{ widthCm: "8", heightCm: "7" }]
-  },
-  {
-    name: "Sticker_9",
-    address: "stickers/sticker9.png",
-    size:[ { widthCm: "6", heightCm: "4" },{ widthCm: "8", heightCm: "7" }]
-  },
-  {
-    name: "Sticker_10",
-    address: "stickers/sticker10.png",
-    size:[ { widthCm: "6", heightCm: "4" },{ widthCm: "8", heightCm: "7" }]
-  },
-  {
-    name: "Sticker_11",
-    address: "stickers/sticker11.png",
-    size:[ { widthCm: "6", heightCm: "4" },{ widthCm: "8", heightCm: "7" }]
-  },
-  {
-    name: "Sticker_12",
-    address: "stickers/sticker12.png",
-    size:[ { widthCm: "6", heightCm: "4" },{ widthCm: "8", heightCm: "7" }]
-  },
-  {
-    name: "Sticker_13",
-    address: "stickers/sticker13.png",
-    size:[ { widthCm: "6", heightCm: "4" },{ widthCm: "8", heightCm: "7" }]
-  },
+                    {
+                      "name": "Sticker_1",
+                      "address": "stickers/sticker1.png",
+                      "size": [
+                          {
+                              "widthCm": "3",
+                              "heightCm": "3.5"
+                          },
+                          {
+                              "widthCm": "6",
+                              "heightCm": "6.5"
+                          }
+                      ],
+                      "categories": [
+                          "\u0645\u0648\u0633\u06cc\u0642\u06cc",
+                          "\u0633\u0631\u06af\u0631\u0645\u06cc"
+                      ],
+                      "isSaved": false,
+                      "isPopular": true
+                  },
+                  {
+                      "name": "Sticker_2",
+                      "address": "stickers/sticker2.png",
+                      "size": [
+                          {
+                              "widthCm": "2.5",
+                              "heightCm": "2.4"
+                          },
+                          {
+                              "widthCm": "4.5",
+                              "heightCm": "4.3"
+                          }
+                      ],
+                      "categories": [
+                          "\u0647\u0646\u0631",
+                          "\u0641\u0631\u0647\u0646\u06af"
+                      ],
+                      "isSaved": false,
+                      "isPopular": false
+                  },
+                  {
+                      "name": "Sticker_3",
+                      "address": "stickers/sticker3.png",
+                      "size": [
+                          {
+                              "widthCm": "5",
+                              "heightCm": "4"
+                          },
+                          {
+                              "widthCm": "8",
+                              "heightCm": "7"
+                          }
+                      ],
+                      "categories": [
+                          "\u0648\u0631\u0632\u0634",
+                          "\u062a\u0646\u0627\u0633\u0628 \u0627\u0646\u062f\u0627\u0645"
+                      ],
+                      "isSaved": false,
+                      "isPopular": false
+                  },
+                  {
+                      "name": "Sticker_4",
+                      "address": "stickers/sticker4.png",
+                      "size": [
+                          {
+                              "widthCm": "3",
+                              "heightCm": "4"
+                          },
+                          {
+                              "widthCm": "7",
+                              "heightCm": "8"
+                          }
+                      ],
+                      "categories": [
+                          "\u0647\u0646\u0631",
+                          "\u0641\u0631\u0647\u0646\u06af"
+                      ],
+                      "isSaved": false,
+                      "isPopular": true
+                  },
+                  {
+                      "name": "Sticker_5",
+                      "address": "stickers/sticker5.png",
+                      "size": [
+                          {
+                              "widthCm": "5",
+                              "heightCm": "4"
+                          },
+                          {
+                              "widthCm": "8",
+                              "heightCm": "7"
+                          }
+                      ],
+                      "categories": [
+                          "\u0641\u0636\u0627",
+                          "\u0639\u0644\u0645"
+                      ],
+                      "isSaved": true,
+                      "isPopular": true
+                  },
+                  {
+                      "name": "Sticker_6",
+                      "address": "stickers/sticker6.png",
+                      "size": [
+                          {
+                              "widthCm": "2",
+                              "heightCm": "3.5"
+                          },
+                          {
+                              "widthCm": "4",
+                              "heightCm": "7"
+                          }
+                      ],
+                      "categories": [
+                          "\u0637\u0628\u06cc\u0639\u062a",
+                          "\u062d\u06cc\u0648\u0627\u0646\u0627\u062a"
+                      ],
+                      "isSaved": true,
+                      "isPopular": true
+                  },
+                  {
+                      "name": "Sticker_7",
+                      "address": "stickers/sticker7.png",
+                      "size": [
+                          {
+                              "widthCm": "6",
+                              "heightCm": "3.5"
+                          },
+                          {
+                              "widthCm": "8",
+                              "heightCm": "5"
+                          }
+                      ],
+                      "categories": [
+                          "\u0645\u0648\u0633\u06cc\u0642\u06cc",
+                          "\u0633\u0631\u06af\u0631\u0645\u06cc"
+                      ],
+                      "isSaved": false,
+                      "isPopular": false
+                  },
+                  {
+                      "name": "Sticker_8",
+                      "address": "stickers/sticker8.png",
+                      "size": [
+                          {
+                              "widthCm": "5",
+                              "heightCm": "4"
+                          },
+                          {
+                              "widthCm": "8",
+                              "heightCm": "7"
+                          }
+                      ],
+                      "categories": [
+                          "\u0637\u0628\u06cc\u0639\u062a",
+                          "\u062d\u06cc\u0648\u0627\u0646\u0627\u062a"
+                      ],
+                      "isSaved": true,
+                      "isPopular": true
+                  },
+                  {
+                      "name": "Sticker_9",
+                      "address": "stickers/sticker9.png",
+                      "size": [
+                          {
+                              "widthCm": "3",
+                              "heightCm": "2.5"
+                          },
+                          {
+                              "widthCm": "6",
+                              "heightCm": "5.5"
+                          }
+                      ],
+                      "categories": [
+                          "\u0645\u0648\u0633\u06cc\u0642\u06cc",
+                          "\u0633\u0631\u06af\u0631\u0645\u06cc"
+                      ],
+                      "isSaved": true,
+                      "isPopular": false
+                  },
+                  {
+                      "name": "Sticker_10",
+                      "address": "stickers/sticker10.png",
+                      "size": [
+                          {
+                              "widthCm": "4",
+                              "heightCm": "3.7"
+                          },
+                          {
+                              "widthCm": "8",
+                              "heightCm": "7.7"
+                          }
+                      ],
+                      "categories": [
+                          "\u0641\u0636\u0627",
+                          "\u0639\u0644\u0645"
+                      ],
+                      "isSaved": true,
+                      "isPopular": false
+                  },
+                  {
+                      "name": "Sticker_11",
+                      "address": "stickers/sticker11.png",
+                      "size": [
+                          {
+                              "widthCm": "3.5",
+                              "heightCm": "4"
+                          },
+                          {
+                              "widthCm": "7.5",
+                              "heightCm": "8"
+                          }
+                      ],
+                      "categories": [
+                          "\u0641\u0636\u0627",
+                          "\u0639\u0644\u0645"
+                      ],
+                      "isSaved": false,
+                      "isPopular": true
+                  },
+                  {
+                      "name": "Sticker_12",
+                      "address": "stickers/sticker12.png",
+                      "size": [
+                          {
+                              "widthCm": "4",
+                              "heightCm": "4"
+                          },
+                          {
+                              "widthCm": "8",
+                              "heightCm": "8"
+                          }
+                      ],
+                      "categories": [
+                          "\u0641\u0636\u0627",
+                          "\u0639\u0644\u0645"
+                      ],
+                      "isSaved": true,
+                      "isPopular": true
+                  },
+                  {
+                      "name": "Sticker_13",
+                      "address": "stickers/sticker13.png",
+                      "size": [
+                          {
+                              "widthCm": "3.5",
+                              "heightCm": "4"
+                          },
+                          {
+                              "widthCm": "7",
+                              "heightCm": "8"
+                          }
+                      ],
+                      "categories": [
+                          "\u0637\u0628\u06cc\u0639\u062a",
+                          "\u062d\u06cc\u0648\u0627\u0646\u0627\u062a"
+                      ],
+                      "isSaved": false,
+                      "isPopular": false
+                  },
+                  {
+                      "name": "Sticker_14",
+                      "address": "stickers/sticker14.png",
+                      "size": [
+                          {
+                              "widthCm": "6",
+                              "heightCm": "3.7"
+                          }
+                      ],
+                      "categories": [
+                          "\u0647\u0646\u0631",
+                          "\u0641\u0631\u0647\u0646\u06af"
+                      ],
+                      "isSaved": true,
+                      "isPopular": true
+                  },
+                  {
+                      "name": "Sticker_15",
+                      "address": "stickers/sticker15.png",
+                      "size": [
+                          {
+                              "widthCm": "5",
+                              "heightCm": "2"
+                          }
+                      ],
+                      "categories": [
+                          "\u0645\u0648\u0633\u06cc\u0642\u06cc",
+                          "\u0633\u0631\u06af\u0631\u0645\u06cc"
+                      ],
+                      "isSaved": false,
+                      "isPopular": false
+                  },
+                  {
+                      "name": "Sticker_16",
+                      "address": "stickers/sticker16.png",
+                      "size": [
+                          {
+                              "widthCm": "8.7",
+                              "heightCm": "9"
+                          }
+                      ],
+                      "categories": [
+                          "\u0641\u0636\u0627",
+                          "\u0639\u0644\u0645"
+                      ],
+                      "isSaved": true,
+                      "isPopular": false
+                  },
+                  {
+                      "name": "Sticker_17",
+                      "address": "stickers/sticker17.png",
+                      "size": [
+                          {
+                              "widthCm": "2.5",
+                              "heightCm": "5"
+                          }
+                      ],
+                      "categories": [
+                          "\u0645\u0648\u0633\u06cc\u0642\u06cc",
+                          "\u0633\u0631\u06af\u0631\u0645\u06cc"
+                      ],
+                      "isSaved": false,
+                      "isPopular": true
+                  },
+                  {
+                      "name": "Sticker_18",
+                      "address": "stickers/sticker18.png",
+                      "size": [
+                          {
+                              "widthCm": "6",
+                              "heightCm": "5"
+                          }
+                      ],
+                      "categories": [
+                          "\u0641\u0636\u0627",
+                          "\u0639\u0644\u0645"
+                      ],
+                      "isSaved": false,
+                      "isPopular": true
+                  },
+                  {
+                      "name": "Sticker_19",
+                      "address": "stickers/sticker19.png",
+                      "size": [
+                          {
+                              "widthCm": "5",
+                              "heightCm": "6"
+                          }
+                      ],
+                      "categories": [
+                          "\u0637\u0628\u06cc\u0639\u062a",
+                          "\u062d\u06cc\u0648\u0627\u0646\u0627\u062a"
+                      ],
+                      "isSaved": false,
+                      "isPopular": false
+                  },
+                  {
+                      "name": "Sticker_20",
+                      "address": "stickers/sticker20.png",
+                      "size": [
+                          {
+                              "widthCm": "6",
+                              "heightCm": "7"
+                          }
+                      ],
+                      "categories": [
+                          "\u0634\u0647\u0631\u0647\u0627",
+                          "\u0645\u0639\u0645\u0627\u0631\u06cc"
+                      ],
+                      "isSaved": true,
+                      "isPopular": false
+                  },
+                  {
+                      "name": "Sticker_21",
+                      "address": "stickers/sticker21.png",
+                      "size": [
+                          {
+                              "widthCm": "5",
+                              "heightCm": "4.5"
+                          }
+                      ],
+                      "categories": [
+                          "\u0648\u0631\u0632\u0634",
+                          "\u062a\u0646\u0627\u0633\u0628 \u0627\u0646\u062f\u0627\u0645"
+                      ],
+                      "isSaved": true,
+                      "isPopular": true
+                  },
+                  {
+                      "name": "Sticker_22",
+                      "address": "stickers/sticker22.png",
+                      "size": [
+                          {
+                              "widthCm": "6",
+                              "heightCm": "9"
+                          }
+                      ],
+                      "categories": [
+                          "\u0641\u0636\u0627",
+                          "\u0639\u0644\u0645"
+                      ],
+                      "isSaved": true,
+                      "isPopular": true
+                  }
 ];
 
 const devices = [
@@ -106,14 +445,78 @@ const devices = [
   },
   // Add other device types as needed
 ];
+
 let firstS = true;
 
 document.addEventListener('DOMContentLoaded', () => {
   showDescriptionModal();
   setupDragDrop();
-  populateStickerSidebar(); // Populate sidebar instead of directly populating the stickers area
+  populateInitialOptions(); // Updated to use the new initial setup
   setupDeviceOptions();
 });
+
+
+function populateInitialOptions() {
+  // Corrected to use the 'stickerOptions' ID as per your HTML structure
+  const sidebar = document.getElementById('stickerOptions'); // Correct ID
+  sidebar.innerHTML = ''; // Clear existing content
+
+  const options = ['ذخیره شدها', 'محبوب ترین‌ها', 'دسته‌بندی‌ها'];
+  options.forEach(option => {
+      const button = document.createElement('button');
+      button.className = 'size-btn Categories'
+      button.textContent = option;
+      button.onclick = () => {
+          clearAndShowLoadingIndicator(); // Show loading indicator
+          setTimeout(() => {
+              switch(option) {
+                  case 'ذخیره شدها':
+                      displaySavedStickers();
+                      break;
+                  case 'محبوب ترین‌ها':
+                      displayPopularStickers();
+                      break;
+                  case 'دسته‌بندی‌ها':
+                      displayCategories();
+                      break;
+              }
+          }, 500); // Wait for 0.5 seconds
+      };
+      sidebar.appendChild(button);
+  });
+}
+
+function showLoadingInSidebar() {
+  const sidebar = document.getElementById('stickerSidebar');
+  sidebar.innerHTML = '<div class="loading">Loading...</div>'; // Clear and show loading
+}
+
+function clearAndShowLoadingIndicator() {
+  console.log(document.getElementById('stickerSidebar')); // Check if the element is correctly referenced
+  const stickerList = document.getElementById('stickerSidebar');
+  
+  stickerList.innerHTML = '<div class="loading">Loading...</div>'; // Insert loading indicator HTML
+  setTimeout(() => {
+      stickerList.innerHTML = ''; // Clear loading indicator after 0.5 seconds
+  }, 500);
+}
+
+function displayCategories() {
+  const sidebar = document.getElementById('stickerSidebar');
+  sidebar.innerHTML = ''; // Clear existing sidebar content
+  const uniqueCategories = getUniqueCategories();
+  
+  uniqueCategories.forEach(category => {
+      const categoryButton = document.createElement('button');
+      categoryButton.className = 'btn-cats'
+      categoryButton.textContent = category;
+      categoryButton.onclick = () => {
+        clearAndShowLoadingIndicator()
+          setTimeout(() => displayStickersByCategory(category), 500);
+      };
+      sidebar.appendChild(categoryButton);
+  });
+}
 
 function showDescriptionModal() {
   const descriptionModal = document.getElementById("descriptionModal");
@@ -225,26 +628,159 @@ function anotherDevice() {
   modal.style.display = "block";
 }
 
-function populateStickerSidebar() {
-  const stickerList = document.getElementById('stickerList');
-  stickers.forEach((sticker) => {
-      const wrapSticker = document.createElement('div')
-      wrapSticker.className = 'wrap-sticker' 
+// Function to show size selection for a specific sticker
+function showSizeOptionsForSticker(sticker, stickerItem) {
+  // Create an overlay div inside the sticker item
+  const sizeSelectionDiv = document.createElement('div');
+  sizeSelectionDiv.className = 'size-selection';
+  sizeSelectionDiv.style.position = 'absolute';
+  sizeSelectionDiv.style.top = '0';
+  sizeSelectionDiv.style.left = '0';
+  sizeSelectionDiv.style.width = '100%';
+  sizeSelectionDiv.style.height = '100%';
+  sizeSelectionDiv.style.display = 'flex';
+  sizeSelectionDiv.style.flexDirection = 'column';
+  sizeSelectionDiv.style.alignItems = 'center';
+  sizeSelectionDiv.style.justifyContent = 'center';
+  sizeSelectionDiv.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+  sizeSelectionDiv.style.zIndex = '10';
 
-      const stickerImg = document.createElement('img');
-      stickerImg.src = sticker.address;
-      stickerImg.className = 'sticker-preview';
-      stickerImg.alt = sticker.name;
+  // Add text to prompt user for size selection
+  const promptText = document.createElement('span');
+  promptText.innerText = 'انتخاب سایز:';
+  promptText.style.margin = '5px';
+  promptText.style.fontSize = '11px';
 
-      const addButton = document.createElement('button');
-      addButton.innerText = '+';
-      addButton.className = 'add-sticker-btn';
-      addButton.onclick = () => promptStickerSizeSelection(sticker); // Adjusted to include size selection
+  sizeSelectionDiv.appendChild(promptText);
 
-      wrapSticker.appendChild(stickerImg);
-      wrapSticker.appendChild(addButton);
-      stickerList.appendChild(wrapSticker);
+  // Add buttons for each size option
+  sticker.size.forEach((size) => {
+    const sizeBtn = document.createElement('button');
+    sizeBtn.innerText = `${size.widthCm}cm x ${size.heightCm}cm`;
+    sizeBtn.className = 'size-btn';
+    sizeBtn.onclick = () => {
+      addStickerToDropzone(sticker, size);
+      stickerItem.removeChild(sizeSelectionDiv); // Remove the size selection div
+    };
+    sizeSelectionDiv.appendChild(sizeBtn);
   });
+
+  // Append the size selection div to the sticker item
+  stickerItem.appendChild(sizeSelectionDiv);
+}
+
+// Adjusted function to handle add button click
+function addButtonClickHandler(sticker, wrapSticker) {
+  return () => showSizeOptionsForSticker(sticker, wrapSticker);
+}
+
+// Updated to attach the modified click handler
+function populateStickerSidebar(stickers) {
+  const stickerList = document.getElementById('stickerSidebar');
+  stickers.forEach((sticker) => {
+    const wrapSticker = document.createElement('div');
+    wrapSticker.className = 'wrap-sticker';
+
+    const stickerImg = document.createElement('img');
+    stickerImg.src = sticker.address;
+    stickerImg.className = 'sticker-preview';
+    stickerImg.alt = sticker.name;
+
+    const addButton = document.createElement('button');
+    addButton.innerText = '+';
+    addButton.className = 'add-sticker-btn';
+    addButton.onclick = addButtonClickHandler(sticker, wrapSticker); // Pass wrapSticker
+
+    wrapSticker.appendChild(stickerImg);
+    wrapSticker.appendChild(addButton);
+    stickerList.appendChild(wrapSticker);
+  });
+}
+
+function populateStickerOptions() {
+  const stickerOptions = document.getElementById('stickerOptions'); // Assume this is a new div in your sidebar
+
+  // Option 1: Saved Stickers
+  const savedStickersBtn = document.createElement('button');
+  savedStickersBtn.innerText = 'استیکرهای ذخیره شده';
+  savedStickersBtn.onclick = () => displaySavedStickers();
+  stickerOptions.appendChild(savedStickersBtn);
+
+  // Option 2: Stickers by Category
+  const categorySelect = document.createElement('select');
+  // Assuming you have a function to get unique categories from stickers
+  const categories = getUniqueCategories(); 
+  categories.forEach(category => {
+    const option = document.createElement('option');
+    option.value = category;
+    option.innerText = category;
+    categorySelect.appendChild(option);
+  });
+  categorySelect.onchange = () => displayStickersByCategory(categorySelect.value);
+  stickerOptions.appendChild(categorySelect);
+
+  // Option 3: Popular Stickers
+  const popularStickersBtn = document.createElement('button');
+  popularStickersBtn.innerText = 'استیکرهای محبوب';
+  popularStickersBtn.onclick = () => displayPopularStickers();
+  stickerOptions.appendChild(popularStickersBtn);
+}
+
+// Implement the functions to display saved, category-specific, and popular stickers
+function displaySavedStickers() {
+  const savedStickers = stickers.filter(sticker => sticker.isSaved);
+  populateStickerSidebar(savedStickers);
+}
+
+function displayStickersByCategory(category) {
+  const categoryStickers = stickers.filter(sticker => sticker.categories.includes(category));
+  populateStickerSidebar(categoryStickers);
+}
+
+function displayPopularStickers() {
+  const popularStickers = stickers.filter(sticker => sticker.isPopular);
+  populateStickerSidebar(popularStickers);
+}
+
+
+// Adjusted function to handle add button click and show size options directly
+function addButtonClickHandler(sticker, wrapSticker) {
+  return () => {
+    // Check if a size selection overlay already exists and remove it
+    const existingOverlay = document.querySelector('.size-selection');
+    if (existingOverlay) {
+      existingOverlay.parentNode.removeChild(existingOverlay);
+    }
+    
+    // Create and show size selection overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'size-selection-overlay';
+    
+    // Populate overlay with size options
+    sticker.size.forEach(size => {
+      const sizeOption = document.createElement('button');
+      sizeOption.className ='size-btn'
+      sizeOption.innerText = `${size.widthCm}cm x ${size.heightCm}cm`;
+      sizeOption.onclick = () => {
+        addStickerToDropzone(sticker, size);
+        wrapSticker.removeChild(overlay);
+      };
+      overlay.appendChild(sizeOption);
+    });
+
+    wrapSticker.style.position = 'relative';
+    wrapSticker.appendChild(overlay);
+  };
+}
+
+// function getUniqueCategories() {
+//   const allCategories = stickers.flatMap(sticker => sticker.categories);
+//   const uniqueCategories = Array.from(new Set(allCategories));
+//   return uniqueCategories;
+// }
+function getUniqueCategories() {
+  const categories = new Set(stickers.flatMap(sticker => sticker.categories));
+  return [...categories];
 }
 
 function promptStickerSizeSelection(sticker) {
