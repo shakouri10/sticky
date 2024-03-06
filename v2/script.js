@@ -455,6 +455,17 @@ document.addEventListener('DOMContentLoaded', () => {
   setupDeviceOptions();
 });
 
+function setupDeviceModalClose() {
+  const deviceModal = document.getElementById("deviceModal");
+
+  // Add click event listener to the modal
+  deviceModal.addEventListener('click', function(event) {
+    // Check if the clicked element is the modal itself and not its child elements
+    if (event.target === deviceModal) {
+      closeModal();
+    }
+  });
+}
 
 function populateInitialOptions() {
   // Corrected to use the 'stickerOptions' ID as per your HTML structure
@@ -504,6 +515,7 @@ function clearAndShowLoadingIndicator() {
 function displayCategories() {
   const sidebar = document.getElementById('stickerSidebar');
   sidebar.innerHTML = ''; // Clear existing sidebar content
+  sidebar.style.display = 'block'
   const uniqueCategories = getUniqueCategories();
   
   uniqueCategories.forEach(category => {
@@ -592,11 +604,7 @@ function selectDevice(deviceImage, widthCm, heightCm) {
   dropzone.id = 'Showdevices'
   dropzone.className = 'dropzone'
 
-  const titleU = document.createElement('h3');
-  titleU.className = 'titleU'
-  titleU.innerText= 'استیکر های انتخابی شما:'
   listSticker.appendChild(dropzone)
-  listSticker.appendChild(titleU)
 
   const { width, height } = calculateImageSize(widthCm, heightCm);
   
@@ -626,6 +634,19 @@ function calculateStickerSize(widthCm, heightCm) {
 function anotherDevice() {
   const modal = document.getElementById("deviceModal");
   modal.style.display = "block";
+  const modal_child = document.getElementById("deviceModal_child");
+
+  const close = document.createElement('div')
+  close.innerHTML = "X"
+  close.onclick = () => {
+    closeModal()
+  };
+  close.style.position = 'absolute'
+  close.style.cursor = 'pointer'
+  close.style.top = '10px'
+  close.style.left = '10px'
+
+  modal_child.appendChild(close)
 }
 
 // Function to show size selection for a specific sticker
@@ -728,16 +749,22 @@ function populateStickerOptions() {
 
 // Implement the functions to display saved, category-specific, and popular stickers
 function displaySavedStickers() {
+  const sidebar = document.getElementById('stickerSidebar');
+  sidebar.style.display = 'flex'
   const savedStickers = stickers.filter(sticker => sticker.isSaved);
   populateStickerSidebar(savedStickers);
 }
 
 function displayStickersByCategory(category) {
+  const sidebar = document.getElementById('stickerSidebar');
+  sidebar.style.display = 'flex'
   const categoryStickers = stickers.filter(sticker => sticker.categories.includes(category));
   populateStickerSidebar(categoryStickers);
 }
 
 function displayPopularStickers() {
+  const sidebar = document.getElementById('stickerSidebar');
+  sidebar.style.display = 'flex'
   const popularStickers = stickers.filter(sticker => sticker.isPopular);
   populateStickerSidebar(popularStickers);
 }
@@ -922,6 +949,7 @@ function setupDragDrop() {
       // target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
       target.style.transform = `translate(${x}px, ${y}px) rotate(${targetRotation}deg)`;
       // Update the position attributes
+      // target.style.position = 'relative'
       target.setAttribute('data-x', x);
       target.setAttribute('data-y', y);
     }
@@ -936,6 +964,7 @@ function setupDragDrop() {
         drop(event) {
           // When a drop happens, add the "dropped" class to the draggable element
           event.relatedTarget.classList.add('dropped');
+
         }
       },
     });
