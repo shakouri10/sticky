@@ -468,34 +468,46 @@ function setupDeviceModalClose() {
 }
 
 function populateInitialOptions() {
-  // Corrected to use the 'stickerOptions' ID as per your HTML structure
-  const sidebar = document.getElementById('stickerOptions'); // Correct ID
-  sidebar.innerHTML = ''; // Clear existing content
+  const sidebar = document.getElementById('stickerOptions');
+  sidebar.innerHTML = '';
 
-  const options = ['ذخیره شدها', 'محبوب ترین‌ها', 'دسته‌بندی‌ها'];
+  const options = ['ذخیره شدها', 'جدیدترین', 'دسته‌بندی‌ها'];
   options.forEach(option => {
-      const button = document.createElement('button');
-      button.className = 'size-btn Categories'
-      button.textContent = option;
-      button.onclick = () => {
-          clearAndShowLoadingIndicator(); // Show loading indicator
-          setTimeout(() => {
-              switch(option) {
-                  case 'ذخیره شدها':
-                      displaySavedStickers();
-                      break;
-                  case 'محبوب ترین‌ها':
-                      displayPopularStickers();
-                      break;
-                  case 'دسته‌بندی‌ها':
-                      displayCategories();
-                      break;
-              }
-          }, 500); // Wait for 0.5 seconds
-      };
-      sidebar.appendChild(button);
+    const button = document.createElement('button');
+    button.className = ' Categories'; // Updated classes
+    button.textContent = option;
+    button.onclick = () => {
+      setActiveButton(button); // Set this button as active
+      clearAndShowLoadingIndicator();
+      setTimeout(() => {
+        switch(option) {
+          case 'ذخیره شدها':
+            displaySavedStickers();
+            break;
+          case 'جدیدترین':
+            displayPopularStickers();
+            break;
+          case 'دسته‌بندی‌ها':
+            displayCategories();
+            break;
+        }
+      }, 500);
+    };
+    sidebar.appendChild(button);
   });
+
+  // Automatically click the first button to set it as active and display its content
+  sidebar.firstChild.click();
 }
+
+function setActiveButton(selectedButton) {
+  const buttons = document.querySelectorAll('#stickerOptions button');
+  buttons.forEach(button => {
+    button.classList.remove('active'); // Remove active class from all buttons
+  });
+  selectedButton.classList.add('active'); // Add active class to the clicked button
+}
+
 
 function showLoadingInSidebar() {
   const sidebar = document.getElementById('stickerSidebar');
