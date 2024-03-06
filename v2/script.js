@@ -860,6 +860,7 @@ function addStickerToDropzone(sticker, selectedSize) {
   // Show the remove button on hover
   stickerDiv.onmouseenter = () => removeButton.style.display = 'block';
   stickerDiv.onmouseleave = () => removeButton.style.display = 'none';
+  // stickerDiv.addEventListener('mousedown', startRotation);
 
   document.getElementById('listSticker').appendChild(stickerDiv);
   if(firstS){
