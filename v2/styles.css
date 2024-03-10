@@ -453,3 +453,43 @@ li{
     box-sizing: border-box;
   }
   
+
+  .rotation-control {
+    position: absolute;
+    z-index: 1000; /* Ensure it's above other elements */
+    display: flex;
+    justify-content: center; /* Center the circle along the line */
+}
+
+.rotation-line {
+    width: 100%;
+    height: 2px;
+    background-color: #3498db; /* A nice shade of blue */
+    position: relative;
+}
+
+.rotation-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; /* Make it a circle */
+    background-color: #e74c3c; /* A contrasting red */
+    position: absolute;
+    top: -7px; /* Halfway above the line */
+    left: 50%; /* Start in the middle */
+    margin-left: -7.5px; /* Center it with negative margin */
+    cursor: pointer; /* Indicate it can be dragged */
+
+    /* Optional: add a shadow for better visibility */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Add a hover effect for the circle for better user feedback */
+.rotation-circle:hover {
+    background-color: #c0392b; /* A darker shade of red */
+}
+
+
+.active-s {
+    box-shadow: 0 0 0 2px #3498db; /* Blue glow for active sticker */
+    transition: box-shadow 0.3s ease-in-out;
+}

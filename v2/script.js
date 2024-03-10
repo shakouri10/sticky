@@ -508,7 +508,6 @@ function setActiveButton(selectedButton) {
   selectedButton.classList.add('active'); // Add active class to the clicked button
 }
 
-
 function showLoadingInSidebar() {
   const sidebar = document.getElementById('stickerSidebar');
   sidebar.innerHTML = '<div class="loading">Loading...</div>'; // Clear and show loading
@@ -781,7 +780,6 @@ function displayPopularStickers() {
   populateStickerSidebar(popularStickers);
 }
 
-
 // Adjusted function to handle add button click and show size options directly
 function addButtonClickHandler(sticker, wrapSticker) {
   return () => {
@@ -812,11 +810,6 @@ function addButtonClickHandler(sticker, wrapSticker) {
   };
 }
 
-// function getUniqueCategories() {
-//   const allCategories = stickers.flatMap(sticker => sticker.categories);
-//   const uniqueCategories = Array.from(new Set(allCategories));
-//   return uniqueCategories;
-// }
 function getUniqueCategories() {
   const categories = new Set(stickers.flatMap(sticker => sticker.categories));
   return [...categories];
@@ -836,6 +829,36 @@ function promptStickerSizeSelection(sticker) {
   }
 }
 
+function showDeleteConfirmationModal(sticker) {
+  const deleteConfirmationModal = document.getElementById('deleteConfirmationModal');
+  deleteConfirmationModal.style.display = 'block';
+
+  // Find buttons within the modal
+  const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+  const cancelDeleteButton = document.getElementById('cancelDeleteButton');
+
+  // Temporarily store click handlers to remove them later
+  const confirmClickHandler = () => {
+      sticker.remove(); // Remove the sticker
+      deleteConfirmationModal.style.display = 'none'; // Hide the modal
+      // Clean up event listeners
+      confirmDeleteButton.removeEventListener('click', confirmClickHandler);
+      cancelDeleteButton.removeEventListener('click', cancelClickHandler);
+  };
+
+  const cancelClickHandler = () => {
+      deleteConfirmationModal.style.display = 'none'; // Simply hide the modal
+      // Clean up event listeners
+      confirmDeleteButton.removeEventListener('click', confirmClickHandler);
+      cancelDeleteButton.removeEventListener('click', cancelClickHandler);
+  };
+
+  // Attach event listeners
+  confirmDeleteButton.addEventListener('click', confirmClickHandler);
+  cancelDeleteButton.addEventListener('click', cancelClickHandler);
+}
+
+
 function addStickerToDropzone(sticker, selectedSize) {
   const stickerDiv = document.createElement('div');
   stickerDiv.className = 'sticker drag-drop';
@@ -843,7 +866,19 @@ function addStickerToDropzone(sticker, selectedSize) {
   stickerDiv.setAttribute('data-rotation', '0');
   stickerDiv.setAttribute('data-x', '0'); // Initial translation X
   stickerDiv.setAttribute('data-y', '0'); // Initial translation Y
-  stickerDiv.onclick = (event) => toggleRotationMode(event.currentTarget);
+  // stickerDiv.onclick = (event) => toggleRotationMode(event.currentTarget);
+  stickerDiv.addEventListener('click', () => {
+    // Check if this sticker is already active
+    if (stickerDiv.classList.contains('active')) {
+      // It's already active, so deactivate it
+      stickerDiv.classList.remove('active');
+      hideRotationControl(); // Hide the rotation control
+    } else {
+      // Make this sticker active and show the rotation control
+      makeStickerActive(stickerDiv);
+      toggleRotationMode(stickerDiv)
+    }
+  });
 
   const { width, height } = calculateStickerSize(selectedSize.widthCm, selectedSize.heightCm);
   stickerDiv.style.width = `${width}px`;
@@ -854,13 +889,18 @@ function addStickerToDropzone(sticker, selectedSize) {
   removeButton.innerText = 'حذف';
   removeButton.className = 'remove-sticker-btn';
   removeButton.style.display = 'none'; // Initially hide the button
-  removeButton.onclick = () => stickerDiv.remove();
+  // removeButton.onclick = () => stickerDiv.remove();
+  removeButton.onclick = () => {
+    // Show the confirmation modal instead of directly removing
+    showDeleteConfirmationModal(stickerDiv);
+};
+
   stickerDiv.appendChild(removeButton);
 
   // Show the remove button on hover
   stickerDiv.onmouseenter = () => removeButton.style.display = 'block';
   stickerDiv.onmouseleave = () => removeButton.style.display = 'none';
-  // stickerDiv.addEventListener('mousedown', startRotation);
+
 
   document.getElementById('listSticker').appendChild(stickerDiv);
   if(firstS){
@@ -869,6 +909,124 @@ function addStickerToDropzone(sticker, selectedSize) {
   }
   setupDragDrop(); // Re-initialize drag and drop for the new sticker
 }
+
+function showRotationControl(sticker) {
+  // Remove existing rotation controls to ensure only one is active
+  document.querySelectorAll('.rotation-control').forEach(control => control.remove());
+  let x = parseFloat(sticker.getAttribute('data-x')) || 0;
+  let y = parseFloat(sticker.getAttribute('data-y')) || 0;
+
+  // Create and append the rotation control
+  const rotationControl = document.createElement('div');
+  rotationControl.className = 'rotation-control';
+  rotationControl.innerHTML = `
+    <div class="rotation-line"></div>
+    <div class="rotation-circle"></div>
+  `;
+  document.body.appendChild(rotationControl);
+
+  // Calculate position for the rotation control
+  const stickerRect = sticker.getBoundingClientRect();
+  rotationControl.style.top = `${stickerRect.bottom}px`; // 10px below the sticker
+  rotationControl.style.left = `${stickerRect.left}px`;
+  rotationControl.style.width = `${stickerRect.width}px`;
+
+  // Draggable circle
+  const circle = rotationControl.querySelector('.rotation-circle');
+  circle.onmousedown = function(event) {
+    event.preventDefault(); // prevent text selection
+    
+    const lineRect = rotationControl.getBoundingClientRect();
+    const originX = event.clientX;
+
+    // Function to move circle within line limits
+    const moveAt = (clientX) => {
+      let newLeft = clientX - lineRect.left - circle.offsetWidth / 2;
+
+      // Confine to rotation line boundaries
+      if (newLeft < 0) {
+        newLeft = 0;
+      }
+      let rightEdge = rotationControl.offsetWidth - circle.offsetWidth;
+      if (newLeft > rightEdge) {
+        newLeft = rightEdge;
+      }
+
+      circle.style.left = newLeft + 'px';
+
+      // Calculate rotation
+      const rotationDegrees = ((newLeft / rightEdge) * 360) - 180; // Example: full left is -180deg, center is 0deg, full right is 180deg
+      sticker.style.transform= `translate(${x}px, ${y}px) rotate(${rotationDegrees}deg)`;
+      sticker.setAttribute('data-rotation', rotationDegrees.toString());
+
+      // sticker.style.transform = `rotate(${rotationDegrees}deg)`;
+    };
+
+    const onMouseMove = (moveEvent) => {
+      moveAt(moveEvent.clientX);
+    };
+
+    document.addEventListener('mousemove', onMouseMove);
+
+    document.onmouseup = function() {
+      document.removeEventListener('mousemove', onMouseMove);
+      document.onmouseup = null;
+    };
+  };
+
+
+  circle.ondragstart = function() {
+    return false;
+  };
+}
+
+let currentActiveSticker = null; // To keep track of the currently active sticker
+
+function hideRotationControl() {
+  const rotationControl = document.querySelector('.rotation-control');
+  if (rotationControl) {
+    rotationControl.remove(); // Remove the rotation control from the document
+  }
+}
+
+function resetActiveSticker() {
+  if (currentActiveSticker) {
+    currentActiveSticker.classList.remove('active');
+    hideRotationControl();
+    currentActiveSticker = null;
+  }
+}
+
+function makeStickerActive(sticker) {
+  resetActiveSticker(); // Reset any previously active sticker
+  currentActiveSticker = sticker; // Set the new active sticker
+  currentActiveSticker.classList.add('active');
+  showRotationControl(currentActiveSticker); // Show rotation control for the new active sticker
+
+  // Hide rotation control after 1 second of inactivity
+  
+  // let timeS = setTimeout(() => {
+  //   if (currentActiveSticker === sticker) { // Check if the sticker is still the active one
+  //     hideRotationControl();
+  //   }
+  // }, 10000);
+  // clearTimeout(timeS)
+}
+
+document.querySelectorAll('.sticker').forEach(sticker => {
+  sticker.onclick = () => {
+    makeStickerActive(sticker);
+  };
+
+  sticker.addEventListener('mouseenter', () => {
+    if (currentActiveSticker !== sticker) {
+      makeStickerActive(sticker);
+    }
+  });
+
+  // Optional: if you want to hide the rotation control after drag-and-drop,
+  // you need to integrate this with your drag-and-drop library's callbacks
+});
 
 function toggleRotationMode(stickerElement) {
   if (stickerElement.classList.contains('rotate-mode')) {
@@ -963,6 +1121,7 @@ function setupDragDrop() {
       target.style.transform = `translate(${x}px, ${y}px) rotate(${targetRotation}deg)`;
       // Update the position attributes
       // target.style.position = 'relative'
+      showRotationControl(target)
       target.setAttribute('data-x', x);
       target.setAttribute('data-y', y);
     }
