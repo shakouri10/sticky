@@ -1013,6 +1013,16 @@ function makeStickerActive(sticker) {
   // clearTimeout(timeS)
 }
 
+document.getElementById('downloadStickerBtn').addEventListener('click', function() {
+  html2canvas(document.getElementById('listSticker')).then(function(canvas) {
+      // Create an image from the canvas
+      var link = document.createElement('a');
+      link.download = 'customized-sticker.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+  });
+});
+
 document.querySelectorAll('.sticker').forEach(sticker => {
   sticker.onclick = () => {
     makeStickerActive(sticker);

@@ -97,13 +97,14 @@ button{
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px; */
-    width: 100%;
+    /* width: 100%; */
     /* display: flex; */
     /* flex-wrap: wrap; */
     border-radius: 10px;
     padding: 5px;
     box-sizing: border-box;
     /* max-height: 1000px; */
+    width: 80%;
     position: relative;
 }
 
@@ -168,7 +169,7 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    /* background-color: #fff; */
     display: block;
     width: 100%;
     height: max-content;
@@ -241,6 +242,7 @@ li{
     justify-content: flex-start;
     width: 20%;
     height: 85vh;
+    max-width: 280px;
 }
 .sticker-sidebar {
     background-color: #f0f0f0;
@@ -253,8 +255,9 @@ li{
 .sticker-sidebar{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-content: baseline;
+    gap: 6px;
 }
 .sticker-list{
     font-size: 10px;
